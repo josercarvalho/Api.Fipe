@@ -31,6 +31,8 @@ namespace JC_ViaBrasil
 
             builder.Services.AddAutoMapper(typeof(TabelaFipeMapping));
 
+            builder.Services.AddCors();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -44,6 +46,7 @@ namespace JC_ViaBrasil
 
             app.UseAuthorization();
 
+            app.UseCors(opcoes => opcoes.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
             app.MapControllers();
 
