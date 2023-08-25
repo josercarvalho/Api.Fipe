@@ -41,6 +41,9 @@ namespace JC_ViaBrasil.Services
         public async Task<TabelaFipeDTO> CreateAsync(TabelaFipeDTO tabelaFipeDTO)
         {
             var tabela = _mapper.Map<TabelaFipe>(tabelaFipeDTO);
+
+            if(tabelaFipeDTO.id.Equals(0)) tabela.id = null;
+
             var data = await _repo.CreateAsync(tabela);
 
             return _mapper.Map<TabelaFipeDTO>(data);

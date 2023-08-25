@@ -16,9 +16,18 @@ namespace JC_ViaBrasil.Repositories
 
         public async Task<TabelaFipe> CreateAsync(TabelaFipe tabelaFipe)
         {
-            _db.Add(tabelaFipe);
-            await _db.SaveChangesAsync();
+            try
+            {
+                _db.Add(tabelaFipe);
+                await _db.SaveChangesAsync();
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine($"Falha ao processar registro: {e.Message}");
+            }
+
             return tabelaFipe;
+
         }
 
         public async Task DeleteAsync(TabelaFipe tabela)

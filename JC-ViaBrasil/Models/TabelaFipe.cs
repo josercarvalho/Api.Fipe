@@ -5,7 +5,7 @@ namespace JC_ViaBrasil.Models
     public class TabelaFipe    
     {
         [JsonPropertyName("id")]
-        public int id { get; set;}
+        public int? id { get; set;}
 
         [JsonPropertyName("valor")]
         public string? valor { get; set; }
